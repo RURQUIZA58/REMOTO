@@ -4,6 +4,7 @@ import schedule
 import time
 import json
 
+response = requests.get('http://checkip.dyndns.org/')
 
 def sms(numero,texto):
     global dt
@@ -52,7 +53,7 @@ def sms(numero,texto):
 
 dt = datetime.datetime.today()
 
-#schedule.every().day.at("12:02").do(sms,4424812489,"prueba "+str(dt))
+#schedule.every().day.at("12:02").do(sms,4424812489,"prueba "+str(dt)+response.text)
 schedule.every(.5).minutes.do(sms,4424812489,"prueba "+str(dt))
 
 
